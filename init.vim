@@ -20,6 +20,9 @@ set noswapfile
 
 set hidden
 
+" Remove trailing whitespaces
+autocmd BufWritePre * :%s/\s\+$//e
+
 " lua << EOF
 " vim.lsp.set_log_level("debug")
 " EOF
