@@ -54,14 +54,14 @@ endif
 
 " Plugings
 " --------
-source ~/.vim/plugins.vim
-source ~/.vim/plugs-config.vim
+runtime plugins.vim
+runtime plugs-config.vim
 
 " LSP configuration
 " -----------------
 set completeopt=menuone,noselect
 
 if has('nvim')
-"  source ~/.vim/lsp-config.vim
-  luafile ~/.vim/lsp-config.lua
+"  runtime lsp-config.vim
+  lua require('lsp-config')
 endif
