@@ -4,7 +4,7 @@ call plug#begin()
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'sheerun/vim-polyglot'
-Plug 'altercation/vim-colors-solarized'
+Plug 'Raimondi/delimitMate'
 Plug 'tomasr/molokai'
 Plug 'jacoborus/tender.vim'
 Plug 'joshdick/onedark.vim'
