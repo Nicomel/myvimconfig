@@ -65,6 +65,5 @@ runtime plugs-config.vim
 set completeopt=menuone,noselect
 
 if has('nvim')
-  runtime lsp-config.vim
   lua require('lsp-config')
 endif
