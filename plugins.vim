@@ -23,5 +23,5 @@ Plug 'psf/black'
 Plug 'Yggdroot/indentLine'
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-compe'
-Plug 'glepnir/lspsaga.nvim'
+" Plug 'glepnir/lspsaga.nvim'
 call plug#end()
