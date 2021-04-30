@@ -51,7 +51,7 @@ let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
 
 " NERDTree
-nnoremap <Leader>e :NERDTreeToggle<Enter>
+nnoremap <Leader>t :NERDTreeToggle<Enter>
 nnoremap <silent> <Leader>d :NERDTreeFind<CR>
 " Open by default
 autocmd StdinReadPre * let s:std_in=1
@@ -81,6 +81,11 @@ let g:ale_sign_warning = ''
 
 " IndentLine
 let g:indentLine_char_list = ['┊']
+
+" Conceallevel to 0 for JSON and md file (due to IndentLine changing the level)
+let g:vim_json_syntax_conceal = 0
+let g:vim_markdown_conceal = 0
+let g:vim_markdown_conceal_code_blocks = 0
 
 " " LSPSaga
 " " lsp provider to find the cursor word definition and reference

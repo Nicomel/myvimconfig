@@ -3,6 +3,7 @@ call plug#begin()
 " plugin on GitHub repo
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-unimpaired'
 Plug 'sheerun/vim-polyglot'
 Plug 'Raimondi/delimitMate'
 Plug 'tomasr/molokai'
@@ -24,4 +25,5 @@ Plug 'Yggdroot/indentLine'
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-compe'
 " Plug 'glepnir/lspsaga.nvim'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 call plug#end()
