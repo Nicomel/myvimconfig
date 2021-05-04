@@ -79,10 +79,10 @@ nnoremap <silent> <Leader>g :Rg<CR>
 let g:ale_sign_error = ''
 let g:ale_sign_warning = ''
 
-" IndentLine
-let g:indentLine_char_list = ['┊']
+" " IndentLine
+let g:indentLine_char_list = ['▏']
 
-" Conceallevel to 0 for JSON and md file (due to IndentLine changing the level)
+" " Conceallevel to 0 for JSON and md file (due to IndentLine changing the level)
 let g:vim_json_syntax_conceal = 0
 let g:vim_markdown_conceal = 0
 let g:vim_markdown_conceal_code_blocks = 0
