@@ -1,3 +1,9 @@
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    enable = true
+  },
+}
+
 require'compe'.setup {
   enabled = true;
   autocomplete = true;
@@ -121,3 +127,5 @@ nvim_lsp.rust_analyzer.setup({
         }
     }
 })
+
+require('lspfuzzy').setup {}

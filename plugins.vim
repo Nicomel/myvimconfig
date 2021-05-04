@@ -19,6 +19,8 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 " Plugin outside ~/.vim/plugged with post-update hook
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'ojroques/nvim-lspfuzzy'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'rust-lang/rust.vim'
 Plug 'psf/black'
 Plug 'Yggdroot/indentLine'
