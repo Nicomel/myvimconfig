@@ -1,9 +1,3 @@
-require'nvim-treesitter.configs'.setup {
-  highlight = {
-    enable = true
-  },
-}
-
 require'compe'.setup {
   enabled = true;
   autocomplete = true;
