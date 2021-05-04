@@ -104,14 +104,19 @@ nvim_lsp.rust_analyzer.setup({
     settings = {
         ["rust-analyzer"] = {
             assist = {
-                importMergeBehavior = "last",
-                importPrefix = "by_self",
+              importMergeBehavior = "last",
+              importPrefix = "by_self",
             },
             cargo = {
-                loadOutDirsFromCheck = true
+              loadOutDirsFromCheck = true,
             },
             procMacro = {
-                enable = true
+              enable = true,
+            },
+            diagnostics = {
+              enable = true,
+              disabled = {"unresolved-proc-macro"},
+              enableExperimental = true,
             },
         }
     }

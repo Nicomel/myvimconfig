@@ -42,8 +42,6 @@ nmap <silent> <leader>lv :so $MYVIMRC<CR>
 noremap <leader>q :q<cr>
 nnoremap <leader>s :w<cr>
 " Move between buffers
-nnoremap <C-H> :bprev<cr>
-nnoremap <C-L> :bnext<cr>
 nnoremap <leader>w :bdelete<cr>
 " Move between errors
 " nmap <silent> <C-k> <Plug>(ale_previous_wrap)
