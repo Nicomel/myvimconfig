@@ -6,8 +6,8 @@ if has("termguicolors")
    " set &t_8b="\e[48;2;%lu;%lu;%lum"
    set termguicolors
 endif
- " Make `Function`s bold in GUI mode
- autocmd ColorScheme * call onedark#extend_highlight("Function", { "gui": "bold" })
+" Make `Function`s bold in GUI mode
+autocmd ColorScheme * call onedark#extend_highlight("Function", { "gui": "bold" })
 syntax on
 let g:onedark_terminal_italics = 1
 colorscheme onedark
@@ -16,6 +16,7 @@ colorscheme onedark
 let &t_ZH="\e[3m"
 let &t_ZR="\e[23m"
 highlight Comment cterm=italic
+let g:colorizer_auto_filetype='css,scss,sass,html'
 
 " air-line
 set laststatus=2

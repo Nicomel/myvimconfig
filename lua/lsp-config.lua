@@ -115,7 +115,7 @@ nvim_lsp.rust_analyzer.setup({
             },
             diagnostics = {
               enable = true,
-              disabled = {"unresolved-proc-macro"},
+              disabled = {"unresolved-macro-call"},
               enableExperimental = true,
             },
         }
