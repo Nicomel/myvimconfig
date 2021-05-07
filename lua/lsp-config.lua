@@ -22,23 +22,6 @@ require'compe'.setup {
   };
 }
 
-local t = function(str)
-  return vim.api.nvim_replace_termcodes(str, true, true, true)
-end
-_G.s_tab_complete = function()
-  if vim.fn.pumvisible() == 1 then
-    return t "<C-p>"
-  elseif vim.fn.call("vsnip#jumpable", {-1}) == 1 then
-    return t "<Plug>(vsnip-jump-prev)"
-  else
-    return t "<S-Tab>"
-  end
-end
-
-vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
-vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
-vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
-
 -- local saga = require 'lspsaga'
 -- saga.init_lsp_saga()
 
@@ -67,7 +50,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
   buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  buf_set_keymap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
   buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
@@ -121,5 +104,53 @@ nvim_lsp.rust_analyzer.setup({
         }
     }
 })
+
+nvim_lsp.tsserver.setup {
+    on_attach = function(client)
+        client.resolved_capabilities.document_formatting = false
+        on_attach(client)
+    end
+}
+
+local filetypes = {
+    typescript = "eslint",
+    typescriptreact = "eslint",
+}
+local linters = {
+    eslint = {
+        sourceName = "eslint",
+        command = "eslint",
+        rootPatterns = {".eslintrc.yml", "package.json"},
+        debounce = 100,
+        args = {"--stdin", "--stdin-filename", "%filepath", "--format", "json"},
+        parseJson = {
+            errorsRoot = "[0].messages",
+            line = "line",
+            column = "column",
+            endLine = "endLine",
+            endColumn = "endColumn",
+            message = "${message} [${ruleId}]",
+            security = "severity"
+        },
+        securities = {[2] = "error", [1] = "warning"}
+    }
+}
+local formatters = {
+    prettier = {command = "prettier", args = {"--stdin-filepath", "%filepath"}}
+}
+local formatFiletypes = {
+    typescript = "prettier",
+    typescriptreact = "prettier"
+}
+nvim_lsp.diagnosticls.setup {
+    on_attach = on_attach,
+    filetypes = vim.tbl_keys(filetypes),
+    init_options = {
+        filetypes = filetypes,
+        linters = linters,
+        formatters = formatters,
+        formatFiletypes = formatFiletypes
+    }
+}
 
 require('lspfuzzy').setup {}

@@ -80,29 +80,17 @@ nnoremap <silent> <Leader>g :Rg<CR>
 let g:ale_sign_error = ''
 let g:ale_sign_warning = ''
 
-" " IndentLine
+" IndentLine
 let g:indentLine_char_list = ['▏']
 
-" " Conceallevel to 0 for JSON and md file (due to IndentLine changing the level)
+" Conceallevel to 0 for JSON and md file (due to IndentLine changing the level)
 let g:vim_json_syntax_conceal = 0
 let g:vim_markdown_conceal = 0
 let g:vim_markdown_conceal_code_blocks = 0
 
-" " LSPSaga
-" " lsp provider to find the cursor word definition and reference
-" nnoremap <silent> gh <cmd>lua require'lspsaga.provider'.lsp_finder()<CR>
-" " code action
-" nnoremap <silent> <leader>ca <cmd>lua require('lspsaga.codeaction').code_action()<CR>
-" vnoremap <silent> <leader>ca :<C-U>lua require('lspsaga.codeaction').range_code_action()<CR>
-" " show hover doc
-" nnoremap <silent> K <cmd>lua require('lspsaga.hover').render_hover_doc()<CR>
-" " scroll down hover doc or scroll in definition preview
-" nnoremap <silent> <C-f> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>
-" " scroll up hover doc
-" nnoremap <silent> <C-b> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>
-" " show signature help
-" nnoremap <silent> gs <cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>
-" " rename
-" nnoremap <silent>gr <cmd>lua require('lspsaga.rename').rename()<CR>
-" " preview definition
-" nnoremap <silent> gpd <cmd>lua require'lspsaga.provider'.preview_definition()<CR>
+" nvim-compe
+inoremap <silent><expr> <C-Space> compe#complete()
+inoremap <silent><expr> <CR>      compe#confirm({ 'keys': "\<Plug>delimitMateCR", 'mode': '' })
+inoremap <silent><expr> <C-e>     compe#close('<C-e>')
+inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
+inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
