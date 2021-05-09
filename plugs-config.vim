@@ -43,9 +43,11 @@ let g:airline_symbols.paste = '∥'
 let g:airline_symbols.whitespace = 'Ξ'
 
 " airline symbols
-let g:airline_left_sep = ''
+" let g:airline_left_sep = ''
+let g:airline_left_sep = "\uE0B4"
 let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
+" let g:airline_right_sep = ''
+let g:airline_right_sep = "\uE0B6"
 let g:airline_right_alt_sep = ''
 let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
@@ -54,15 +56,19 @@ let g:airline_symbols.linenr = ''
 " NERDTree
 nnoremap <Leader>t :NERDTreeToggle<Enter>
 nnoremap <silent> <Leader>d :NERDTreeFind<CR>
-" Open by default
 autocmd StdinReadPre * let s:std_in=1
+" Start NERDTree when Vim is started without file arguments
 autocmd VimEnter * if argc() == 0 && !exists('s:std_in') && v:this_session == '' | NERDTree | endif
+" Start NERDTree when Vim starts with a directory argument
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') |
     \ execute 'NERDTree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | endif
 " Automatically close a tab if the only remaining window is NerdTree
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
     \ quit | endif
-let NERDTreeQuitOnOpen = 1
+" If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
+autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
+    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
+" let NERDTreeQuitOnOpen = 1
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 let g:NERDTreeGitStatusUseNerdFonts = 1

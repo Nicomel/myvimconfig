@@ -43,6 +43,15 @@ noremap <leader>q :q<cr>
 nnoremap <leader>s :w<cr>
 " Move between buffers
 nnoremap <leader>w :bdelete<cr>
+" use ,v to make a new vertical split, ,s for horiz, ,x to close a split
+noremap <leader>v <c-w>v<c-w>l
+noremap <leader>V <c-w>s<c-w>j
+noremap <leader>x <c-w>c
+" use ctrl-h/j/k/l to switch between splits
+map <c-j> <c-w>j
+map <c-k> <c-w>k
+map <c-l> <c-w>l
+map <c-h> <c-w>h
 " Move between errors
 " nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 " nmap <silent> <C-j> <Plug>(ale_next_wrap)
