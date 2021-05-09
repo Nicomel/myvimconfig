@@ -87,7 +87,9 @@ let g:ale_sign_error = ''
 let g:ale_sign_warning = ''
 
 " IndentLine
-let g:indentLine_char_list = ['▏']
+" let g:indentLine_char_list = ['▏']
+let g:indentLine_char_list = [' ']
+let g:indentLine_bgcolor_gui = '#333842'
 
 " Conceallevel to 0 for JSON and md file (due to IndentLine changing the level)
 let g:vim_json_syntax_conceal = 0
