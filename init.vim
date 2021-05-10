@@ -7,6 +7,8 @@ set nowrap        " don't wrap lines
 set mouse=a
 set autoindent
 set number        " Line numbers on
+set foldmethod=syntax
+set foldlevel=10
 
 set showmatch     " Show matching brackets/parenthesis
 set incsearch     " Find as you type search
