@@ -29,6 +29,8 @@ Plug 'psf/black'
 Plug 'Yggdroot/indentLine'
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-compe'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 " Plug 'glepnir/lspsaga.nvim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 call plug#end()

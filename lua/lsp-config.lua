@@ -18,7 +18,7 @@ require'compe'.setup {
     calc = true;
     nvim_lsp = true;
     nvim_lua = true;
-    vsnip = true;
+    ultisnips = true;
   };
 }
 
@@ -80,36 +80,51 @@ local on_attach = function(client, bufnr)
 	end
 end
 
-nvim_lsp.pyright.setup({ on_attach=on_attach })
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.textDocument.completion.completionItem.resolveSupport = {
+  properties = {
+    'documentation',
+    'detail',
+    'additionalTextEdits',
+  }
+}
+
+nvim_lsp.pyright.setup({
+  on_attach=on_attach,
+  capabilities = capabilities
+})
 
 nvim_lsp.rust_analyzer.setup({
-    on_attach=on_attach,
-    settings = {
-        ["rust-analyzer"] = {
-            assist = {
-              importMergeBehavior = "last",
-              importPrefix = "by_self",
-            },
-            cargo = {
-              loadOutDirsFromCheck = true,
-            },
-            procMacro = {
-              enable = true,
-            },
-            diagnostics = {
-              enable = true,
-              disabled = {"unresolved-macro-call"},
-              enableExperimental = true,
-            },
-        }
+  on_attach=on_attach,
+  capabilities = capabilities,
+  settings = {
+    ["rust-analyzer"] = {
+      assist = {
+        importMergeBehavior = "last",
+        importPrefix = "by_self",
+      },
+      cargo = {
+        loadOutDirsFromCheck = true,
+      },
+      procMacro = {
+        enable = true,
+      },
+      diagnostics = {
+        enable = true,
+        disabled = {"unresolved-macro-call"},
+        enableExperimental = true,
+      },
     }
+  }
 })
 
 nvim_lsp.tsserver.setup {
     on_attach = function(client)
         client.resolved_capabilities.document_formatting = false
         on_attach(client)
-    end
+    end,
+    capabilities = capabilities
 }
 
 local filetypes = {
