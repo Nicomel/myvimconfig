@@ -45,10 +45,12 @@ let g:airline_symbols.whitespace = 'Ξ'
 " airline symbols
 " let g:airline_left_sep = ''
 let g:airline_left_sep = "\uE0B4"
-let g:airline_left_alt_sep = ''
+" let g:airline_left_alt_sep = ''
+let g:airline_left_alt_sep = "\uE0B5"
 " let g:airline_right_sep = ''
 let g:airline_right_sep = "\uE0B6"
-let g:airline_right_alt_sep = ''
+" let g:airline_right_alt_sep = ''
+let g:airline_right_alt_sep = "\uE0B7"
 let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''

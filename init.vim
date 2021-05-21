@@ -59,6 +59,8 @@ map <c-h> <c-w>h
 " nmap <silent> <C-j> <Plug>(ale_next_wrap)
 " Search for visually selected text
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
+" Copy visually selected text into system clipboard
+vnoremap <C-c> "*y
 
 if has('nvim') && !empty($CONDA_PREFIX)
   let g:python3_host_prog = $CONDA_PREFIX . '/bin/python'
