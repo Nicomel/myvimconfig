@@ -107,3 +107,4 @@ inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
 
 " UltiSnips
 let g:UltiSnipsExpandTrigger="<tab>"
+autocmd FileType typescriptreact UltiSnipsAddFiletypes typescript.typescriptreact.html
