@@ -16,7 +16,11 @@ colorscheme onedark
 let &t_ZH="\e[3m"
 let &t_ZR="\e[23m"
 highlight Comment cterm=italic
-let g:colorizer_auto_filetype='css,scss,sass,html'
+let g:colorizer_auto_filetype='css,scss,sass,html,tsx,jsx'
+highlight NormalFloat guibg=NONE
+" highlight NormalFloat guibg=#32363E
+highlight FloatBorder guifg=#282c34 guibg=#ABB2BF
+highlight LineNr guibg=#2D3139
 
 " air-line
 set laststatus=2

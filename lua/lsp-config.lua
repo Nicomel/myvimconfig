@@ -27,6 +27,24 @@ require'compe'.setup {
 
 local nvim_lsp = require('lspconfig')
 
+-- Floating window styling
+vim.lsp.handlers["textDocument/hover"] =
+  vim.lsp.with(
+  vim.lsp.handlers.hover,
+  {
+    border = {'╭', '─', '╮', '│', '╯', '─', '╰', '│'}
+    -- border = {'', 'ﮋ', '', 'ﮋ', '', 'ﮋ', '', 'ﮋ'}
+  }
+)
+
+vim.lsp.handlers["textDocument/signatureHelp"] =
+  vim.lsp.with(
+  vim.lsp.handlers.signature_help,
+  {
+    border = "single"
+  }
+)
+
 local on_attach = function(client, bufnr)
 	local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
 	local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
@@ -52,9 +70,9 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   buf_set_keymap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
-  buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-  buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+  buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({border = "single"})<CR>', opts)
+  buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev({ popup_opts = { border = "single" }})<CR>', opts)
+  buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next({ popup_opts = { border = "single" }})<CR>', opts)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
 
 		-- Set some keybinds conditional on server capabilities
@@ -90,11 +108,13 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
   }
 }
 
+-- Python LSP setup
 nvim_lsp.pyright.setup({
   on_attach=on_attach,
   capabilities = capabilities
 })
 
+-- Rust LSP setup
 nvim_lsp.rust_analyzer.setup({
   on_attach=on_attach,
   capabilities = capabilities,
@@ -119,6 +139,7 @@ nvim_lsp.rust_analyzer.setup({
   }
 })
 
+-- Typescript LSP setup
 nvim_lsp.tsserver.setup {
     on_attach = function(client)
         client.resolved_capabilities.document_formatting = false
@@ -169,3 +190,4 @@ nvim_lsp.diagnosticls.setup {
 }
 
 require('lspfuzzy').setup {}
+
