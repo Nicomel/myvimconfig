@@ -33,7 +33,6 @@ vim.lsp.handlers["textDocument/hover"] =
   vim.lsp.handlers.hover,
   {
     border = {'╭', '─', '╮', '│', '╯', '─', '╰', '│'}
-    -- border = {'', 'ﮋ', '', 'ﮋ', '', 'ﮋ', '', 'ﮋ'}
   }
 )
 
@@ -41,7 +40,7 @@ vim.lsp.handlers["textDocument/signatureHelp"] =
   vim.lsp.with(
   vim.lsp.handlers.signature_help,
   {
-    border = "single"
+    border = {'╭', '─', '╮', '│', '╯', '─', '╰', '│'}
   }
 )
 

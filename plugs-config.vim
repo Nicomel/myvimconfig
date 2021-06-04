@@ -19,8 +19,11 @@ highlight Comment cterm=italic
 let g:colorizer_auto_filetype='css,scss,sass,html,tsx,jsx'
 highlight NormalFloat guibg=NONE
 " highlight NormalFloat guibg=#32363E
-highlight FloatBorder guifg=#282c34 guibg=#ABB2BF
-highlight LineNr guibg=#2D3139
+highlight FloatBorder guifg=#61AFEF guibg=NONE
+" highlight LineNr guibg=#2D3139
+highlight LineNr guibg=#1B1F27
+set pumblend=15
+hi PmenuSel blend=0
 
 " air-line
 set laststatus=2
