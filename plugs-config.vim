@@ -26,6 +26,19 @@ highlight LineNr guibg=#1B1F27
 " Completion meny style
 set pumblend=15
 hi PmenuSel blend=0
+" Background colors for active vs inactive windows
+hi ActiveWindow guibg=NONE
+hi InactiveWindow guibg=#30343C
+" Call method on window enter
+augroup WindowManagement
+  autocmd!
+  autocmd WinEnter * call Handle_Win_Enter()
+augroup END
+
+" Change highlight group of active/inactive windows
+function! Handle_Win_Enter()
+  setlocal winhighlight=Normal:ActiveWindow,NormalNC:InactiveWindow
+endfunction
 
 " air-line
 set laststatus=2
