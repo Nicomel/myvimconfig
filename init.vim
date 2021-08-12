@@ -45,11 +45,12 @@ if !exists('g:vscode')
   noremap <leader>q :q<cr>
   nnoremap <leader>s :w<cr>
   " Move between buffers
-  nnoremap <leader>w :bdelete<cr>
+  " nnoremap <leader>w :bdelete<cr>
+  nnoremap <leader>w :bprevious<cr>:bdelete #<cr>
   " use ,v to make a new vertical split, ,s for horiz, ,x to close a split
   noremap <leader>v <c-w>v<c-w>l
-  noremap <leader>V <c-w>s<c-w>j
-  noremap <leader>x <c-w>c
+  noremap <leader>y <c-w>s<c-w>j
+  noremap <leader>x <c-w>o
   " use ctrl-h/j/k/l to switch between splits
   map <c-j> <c-w>j
   map <c-k> <c-w>k

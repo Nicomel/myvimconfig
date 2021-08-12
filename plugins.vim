@@ -14,7 +14,6 @@ Plug 'joshdick/onedark.vim'
 Plug 'dstein64/nvim-scrollview'
 " Plug 'ap/vim-css-color'
 Plug 'chrisbra/Colorizer'
-Plug 'dense-analysis/ale'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 " On-demand loading

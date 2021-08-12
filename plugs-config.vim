@@ -12,6 +12,7 @@ syntax on
 let g:onedark_terminal_italics = 1
 colorscheme onedark
 "set background=dark
+hi Normal guibg=NONE
 " To enable italics
 let &t_ZH="\e[3m"
 let &t_ZR="\e[23m"
@@ -101,15 +102,25 @@ let g:NERDTreeGitStatusGitBinPath = '/usr/local/bin/git'
 let g:NERDTreeGitStatusShowClean = 1
 let g:NERDTreeGitStatusConcealBrackets = 1
 
+" Fugitive
+nnoremap <leader>gs :Git<CR>
+nnoremap <leader>gc :Git commit -v -q<CR>
+nnoremap <leader>ga :Git commit --amend<CR>
+nnoremap <leader>gt :Git commit -v -q %<CR>
+nnoremap <leader>gd :Gdiff<CR>
+nnoremap <leader>ge :Gedit<CR>
+nnoremap <leader>gr :Gread<CR>
+nnoremap <leader>gw :Gwrite<CR>
+nnoremap <leader>gl :Gclog<CR>
+nnoremap <leader>gp :Ggrep<Space>
+nnoremap <leader>gm :Gmove<Space>
+nnoremap <leader>gb :Git branch<Space>
+nnoremap <leader>go :Git checkout<Space>
+
 " FZF map
 nnoremap <silent> <Leader>o :Files<CR>
 nnoremap <silent> <Leader>b :Buffers<CR>
-nnoremap <silent> <Leader>g :Rg<CR>
-
-" ALE
-let g:ale_sign_error = ''
-let g:ale_sign_warning = ''
-let g:ale_floating_window_border = ['│', '─', '╭', '╮', '╯', '╰']
+nnoremap <silent> <Leader>r :Rg<CR>
 
 " IndentLine
 " let g:indentLine_char_list = ['▏']
@@ -130,4 +141,4 @@ inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
 
 " UltiSnips
 let g:UltiSnipsExpandTrigger="<tab>"
-autocmd FileType typescriptreact UltiSnipsAddFiletypes typescript.typescriptreact.html
+autocmd FileType typescript,typescriptreact UltiSnipsAddFiletypes typescript.typescriptreact.html
