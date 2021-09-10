@@ -29,7 +29,7 @@ set pumblend=15
 hi PmenuSel blend=0
 " Background colors for active vs inactive windows
 hi ActiveWindow guibg=NONE
-hi InactiveWindow guibg=#30343C
+" hi InactiveWindow guibg=#30343C
 " Call method on window enter
 augroup WindowManagement
   autocmd!
