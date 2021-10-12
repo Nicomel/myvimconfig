@@ -142,3 +142,6 @@ inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
 " UltiSnips
 let g:UltiSnipsExpandTrigger="<tab>"
 autocmd FileType typescript,typescriptreact UltiSnipsAddFiletypes typescript.typescriptreact.html
+
+" SymbolsOutline
+nnoremap <leader>l :SymbolsOutline<CR>

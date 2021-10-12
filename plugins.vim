@@ -35,4 +35,5 @@ Plug 'honza/vim-snippets'
 Plug 'mlaursen/vim-react-snippets'
 " Plug 'glepnir/lspsaga.nvim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+Plug 'simrat39/symbols-outline.nvim',
 call plug#end()
