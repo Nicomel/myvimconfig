@@ -49,8 +49,9 @@ if !exists('g:vscode')
   nnoremap <leader>w :bprevious<cr>:bdelete #<cr>
   " use ,v to make a new vertical split, ,s for horiz, ,x to close a split
   noremap <leader>v <c-w>v<c-w>l
-  noremap <leader>y <c-w>s<c-w>j
-  noremap <leader>x <c-w>o
+  noremap <leader>h <c-w>s<c-w>j
+  noremap <leader>c :close<cr>
+  noremap <leader>x :only<cr>
   " use ctrl-h/j/k/l to switch between splits
   map <c-j> <c-w>j
   map <c-k> <c-w>k
