@@ -38,7 +38,6 @@ nnoremap <leader>er :NvimTreeRefresh<CR>
 nnoremap <leader>es :NvimTreeResize 50<CR>
 " NvimTreeOpen, NvimTreeClose, NvimTreeFocus, NvimTreeFindFileToggle, and NvimTreeResize are also available if you need them
 
-
 " Fugitive
 nnoremap <leader>gs :Git<CR>
 nnoremap <leader>gc :Git commit -v -q<CR>
