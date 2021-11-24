@@ -98,7 +98,7 @@ let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 let g:NERDTreeGitStatusUseNerdFonts = 1
 let g:NERDTreeGitStatusUntrackedFilesMode = 'all'
-let g:NERDTreeGitStatusGitBinPath = '/usr/local/bin/git'
+let g:NERDTreeGitStatusGitBinPath = '/usr/bin/git'
 let g:NERDTreeGitStatusShowClean = 1
 let g:NERDTreeGitStatusConcealBrackets = 1
 
