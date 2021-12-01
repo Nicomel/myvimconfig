@@ -107,13 +107,14 @@ nnoremap <leader>gs :Git<CR>
 nnoremap <leader>gc :Git commit -v -q<CR>
 nnoremap <leader>ga :Git commit --amend<CR>
 nnoremap <leader>gt :Git commit -v -q %<CR>
-nnoremap <leader>gd :Gdiff<CR>
+nnoremap <leader>gd :Gvdiffsplit<CR>
 nnoremap <leader>ge :Gedit<CR>
 nnoremap <leader>gr :Gread<CR>
 nnoremap <leader>gw :Gwrite<CR>
 nnoremap <leader>gl :Gclog<CR>
+nnoremap <leader>g0 :0Gclog<CR>
 nnoremap <leader>gp :Ggrep<Space>
-nnoremap <leader>gm :Gmove<Space>
+nnoremap <leader>gm :GMove<Space>
 nnoremap <leader>gb :Git branch<Space>
 nnoremap <leader>go :Git checkout<Space>
 
