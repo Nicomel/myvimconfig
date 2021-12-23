@@ -9,6 +9,13 @@ local border = {
   {'│',"FloatBorder"},
 }
 
+local function lspSymbol(name, icon)
+vim.fn.sign_define(
+	'DiagnosticSign' .. name,
+	{ text = icon, numhl = 'DiagnosticDefault' .. name }
+)
+end
+
 require'compe'.setup {
   enabled = true;
   autocomplete = true;
@@ -65,10 +72,12 @@ local on_attach = function(client, bufnr)
 
 	buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-	vim.fn.sign_define("LspDiagnosticsSignError", {text = ""})
-	vim.fn.sign_define("LspDiagnosticsSignWarning", {text = ""})
-	vim.fn.sign_define("LspDiagnosticsSignInformation", {text = ""})
-	vim.fn.sign_define("LspDiagnosticsSignHint", {text = ""})
+	lspSymbol("Error", "")
+	lspSymbol("Warn", "")
+	lspSymbol("Warning", "")
+	lspSymbol("Information", "")
+	lspSymbol("Info", "")
+	lspSymbol("Hint", "")
 
 	-- Mappings.
 	local opts = { noremap=true, silent=true }
@@ -84,9 +93,9 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   buf_set_keymap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({border = {"╭", "─", "╮", "│", "╯", "─", "╰", "│"}} })<CR>', opts)
-  buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev({ popup_opts = { border = {"╭", "─", "╮", "│", "╯", "─", "╰", "│"} }})<CR>', opts)
-  buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next({ popup_opts = { border = {"╭", "─", "╮", "│", "╯", "─", "╰", "│"} }})<CR>', opts)
+  buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({float = {border = {"╭", "─", "╮", "│", "╯", "─", "╰", "│"}} })<CR>', opts)
+  buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev({float = {border = {"╭", "─", "╮", "│", "╯", "─", "╰", "│"}} })<CR>', opts)
+  buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next({float = {border = {"╭", "─", "╮", "│", "╯", "─", "╰", "│"}} })<CR>', opts)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
 
 		-- Set some keybinds conditional on server capabilities
