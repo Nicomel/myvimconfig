@@ -6,7 +6,7 @@ set nowrap        " don't wrap lines
 
 set mouse=a
 set autoindent
-set number        " Line numbers on
+set number relativenumber        " Line numbers on
 set foldmethod=syntax
 set foldlevel=10
 

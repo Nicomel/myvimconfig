@@ -12,9 +12,28 @@ local border = {
 local function lspSymbol(name, icon)
 vim.fn.sign_define(
 	'DiagnosticSign' .. name,
-	{ text = icon, numhl = 'DiagnosticDefault' .. name }
+	{ text = icon, texthl = 'Diagnostic' .. name, numhl = 'Diagnostic' .. name }
 )
 end
+
+require'nvim-tree'.setup()
+
+require('lualine').setup {
+  options = {
+    -- ... your lualine config
+    theme = 'tokyonight'
+    -- ... your lualine config
+  }
+}
+
+require("bufferline").setup{}
+
+vim.opt.list = true
+-- vim.opt.listchars:append("eol:↴")
+
+require("indent_blankline").setup {
+    -- show_end_of_line = true,
+}
 
 require'compe'.setup {
   enabled = true;
@@ -53,6 +72,8 @@ require'compe'.setup {
 -- local saga = require 'lspsaga'
 -- saga.init_lsp_saga()
 
+require("trouble").setup{}
+
 local nvim_lsp = require('lspconfig')
 
 local on_attach = function(client, bufnr)
@@ -72,12 +93,11 @@ local on_attach = function(client, bufnr)
 
 	buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-	lspSymbol("Error", "")
-	lspSymbol("Warn", "")
-	lspSymbol("Warning", "")
-	lspSymbol("Information", "")
-	lspSymbol("Info", "")
-	lspSymbol("Hint", "")
+  lspSymbol("Error", "")
+  lspSymbol("Warn", "")
+  lspSymbol("Hint", "")
+  lspSymbol("Info", "")
+  lspSymbol("Other", "﫠")
 
 	-- Mappings.
 	local opts = { noremap=true, silent=true }
@@ -97,14 +117,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev({float = {border = {"╭", "─", "╮", "│", "╯", "─", "╰", "│"}} })<CR>', opts)
   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next({float = {border = {"╭", "─", "╮", "│", "╯", "─", "╰", "│"}} })<CR>', opts)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-
-		-- Set some keybinds conditional on server capabilities
-	if client.resolved_capabilities.document_formatting then
-		buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-	end
-	if client.resolved_capabilities.document_range_formatting then
-		buf_set_keymap("v", "<space>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
-	end
+  buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 
 	-- Set autocommands conditional on server_capabilities
 	if client.resolved_capabilities.document_highlight then
