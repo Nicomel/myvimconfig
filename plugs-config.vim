@@ -97,7 +97,7 @@ let g:nvim_tree_icons = {
     \   }
     \ }
 
-nnoremap <Leader>t :NvimTreeToggle<CR>
+nnoremap <Leader>e :NvimTreeToggle<CR>
 nnoremap <leader>d :NvimTreeFindFile<CR>
 nnoremap <leader>u :NvimTreeRefresh<CR>
 " NvimTreeOpen, NvimTreeClose, NvimTreeFocus, NvimTreeFindFileToggle, and NvimTreeResize are also available if you need them
@@ -121,7 +121,7 @@ nnoremap <leader>go :Git checkout<Space>
 
 " FZF map
 nnoremap <silent> <Leader>o :Files<CR>
-nnoremap <silent> <Leader>b :Buffers<CR>
+nnoremap <silent> <Leader>p :Buffers<CR>
 nnoremap <silent> <Leader>r :Rg<CR>
 nnoremap <silent> <Leader>ry :Rg <C-r>"<CR>
 
@@ -148,3 +148,22 @@ autocmd FileType typescript,typescriptreact UltiSnipsAddFiletypes typescript.typ
 
 " SymbolsOutline
 nnoremap <leader>l :SymbolsOutline<CR>
+
+" Ultest
+let g:ultest_use_pty = 1
+nmap <silent> <leader>tn :TestNearest<CR>
+nmap <silent> <leader>tf :TestFile<CR>
+nmap <silent> <leader>ts :TestSuite<CR>
+nmap <silent> <leader>tl :TestLast<CR>
+nmap <silent> <leader>tv :TestVisit<CR>
+
+" Nvim-dap
+nnoremap <silent> <F5> :lua require'dap'.continue()<CR>
+nnoremap <silent> <F10> :lua require'dap'.step_over()<CR>
+nnoremap <silent> <F11> :lua require'dap'.step_into()<CR>
+nnoremap <silent> <F12> :lua require'dap'.step_out()<CR>
+nnoremap <silent> <leader>b :lua require'dap'.toggle_breakpoint()<CR>
+nnoremap <silent> <leader>B :lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>
+nnoremap <silent> <leader>lp :lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>
+nnoremap <silent> <leader>dr :lua require'dap'.repl.open()<CR>
+nnoremap <silent> <leader>dl :lua require'dap'.run_last()<CR>

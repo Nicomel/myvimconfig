@@ -27,6 +27,8 @@ Plug 'rust-lang/rust.vim'
 Plug 'psf/black'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'neovim/nvim-lspconfig'
+Plug 'mfussenegger/nvim-dap'
+Plug 'rcarriga/nvim-dap-ui'
 Plug 'hrsh7th/nvim-compe'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
@@ -34,4 +36,6 @@ Plug 'mlaursen/vim-react-snippets'
 " Plug 'glepnir/lspsaga.nvim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'simrat39/symbols-outline.nvim',
+Plug 'vim-test/vim-test'
+Plug 'rcarriga/vim-ultest', { 'do': ':UpdateRemotePlugins' }
 call plug#end()

@@ -229,3 +229,45 @@ nvim_lsp.diagnosticls.setup {
 require('lspfuzzy').setup {}
 
 -- vim.lsp.set_log_level("debug")
+
+local dap = require('dap')
+dap.adapters.python = {
+  type = 'executable';
+  command = os.getenv('HOME') .. '/miniconda3/envs/debugpy/bin/python';
+  args = { '-m', 'debugpy.adapter' };
+}
+
+--- DAP configuration
+local dap = require('dap')
+dap.configurations.python = {
+  {
+    -- The first three options are required by nvim-dap
+    type = 'python'; -- the type here established the link to the adapter definition: `dap.adapters.python`
+    request = 'launch';
+    name = "Launch file";
+
+    -- Options below are for debugpy, see https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings for supported options
+
+    program = "${file}"; -- This configuration will launch the current file if used.
+    pythonPath = function()
+      -- debugpy supports launching an application with a different interpreter then the one used to launch debugpy itself.
+      -- The code below looks for a `venv` or `.venv` folder in the current directly and uses the python within.
+      -- You could adapt this - to for example use the `VIRTUAL_ENV` environment variable.
+      local venv_python = os.getenv("CONDA_PREFIX")
+      local cwd = vim.fn.getcwd()
+      return venv_python .. '/bin/python'
+    end;
+  },
+  {
+    type = 'python'; -- the type here established the link to the adapter definition: `dap.adapters.python`
+    request = 'launch';
+    name = "Launch app module";
+    module = function ()
+      return "${workspaceFolderBasename}" .. ".app";
+    end;
+    pythonPath = function()
+      local venv_python = os.getenv("CONDA_PREFIX")
+      return venv_python .. '/bin/python'
+    end;
+  }
+}
