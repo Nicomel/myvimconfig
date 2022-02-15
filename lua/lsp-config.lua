@@ -263,7 +263,8 @@ dap.configurations.python = {
     request = 'launch';
     name = "Launch app module";
     module = function ()
-      return "${workspaceFolderBasename}" .. ".app";
+      -- return "${workspaceFolderBasename}" .. ".app";
+      return "app";
     end;
     pythonPath = function()
       local venv_python = os.getenv("CONDA_PREFIX")
