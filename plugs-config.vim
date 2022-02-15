@@ -100,7 +100,6 @@ let g:nvim_tree_icons = {
 nnoremap <Leader>fe :NvimTreeToggle<CR>
 nnoremap <leader>ff :NvimTreeFindFile<CR>
 nnoremap <leader>fr :NvimTreeRefresh<CR>
-nnoremap <leader>fz :NvimTreeResize<CR>
 " NvimTreeOpen, NvimTreeClose, NvimTreeFocus, NvimTreeFindFileToggle, and NvimTreeResize are also available if you need them
 
 
