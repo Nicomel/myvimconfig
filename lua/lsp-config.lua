@@ -35,6 +35,7 @@ require("indent_blankline").setup {
     -- show_end_of_line = true,
 }
 
+-- Completion compe
 require'compe'.setup {
   enabled = true;
   autocomplete = true;
@@ -69,11 +70,10 @@ require'compe'.setup {
   };
 }
 
--- local saga = require 'lspsaga'
--- saga.init_lsp_saga()
 
 require("trouble").setup{}
 
+--------------- LSP -------------------
 local nvim_lsp = require('lspconfig')
 
 local on_attach = function(client, bufnr)
@@ -237,38 +237,65 @@ dap.adapters.python = {
   args = { '-m', 'debugpy.adapter' };
 }
 
---- DAP configuration
-local dap = require('dap')
-dap.configurations.python = {
-  {
-    -- The first three options are required by nvim-dap
-    type = 'python'; -- the type here established the link to the adapter definition: `dap.adapters.python`
-    request = 'launch';
-    name = "Launch file";
+-------------- Tree-sitter -----------------
+require'nvim-treesitter.configs'.setup {
+  -- One of "all", "maintained" (parsers with maintainers), or a list of languages
+  -- ensure_installed = "maintained",
+  ensure_installed = {"bash", "c", "cmake", "cpp", "css", "scss", "dockerfile", "go", "json", "jsdoc", "lua", "make", "ocaml", "ocaml_interface", "r", "rust", "regex", "python", "javascript", "typescript", "tsx", "toml", "vim", "vue", "yaml"},
 
-    -- Options below are for debugpy, see https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings for supported options
+  -- Install languages synchronously (only applied to `ensure_installed`)
+  sync_install = false,
 
-    program = "${file}"; -- This configuration will launch the current file if used.
-    pythonPath = function()
-      -- debugpy supports launching an application with a different interpreter then the one used to launch debugpy itself.
-      -- The code below looks for a `venv` or `.venv` folder in the current directly and uses the python within.
-      -- You could adapt this - to for example use the `VIRTUAL_ENV` environment variable.
-      local venv_python = os.getenv("CONDA_PREFIX")
-      local cwd = vim.fn.getcwd()
-      return venv_python .. '/bin/python'
-    end;
+  highlight = {
+    -- `false` will disable the whole extension
+    enable = true,
+
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = false,
   },
-  {
-    type = 'python'; -- the type here established the link to the adapter definition: `dap.adapters.python`
-    request = 'launch';
-    name = "Launch app module";
-    module = function ()
-      -- return "${workspaceFolderBasename}" .. ".app";
-      return "app";
-    end;
-    pythonPath = function()
-      local venv_python = os.getenv("CONDA_PREFIX")
-      return venv_python .. '/bin/python'
-    end;
-  }
 }
+
+-------------- Unit vim ultests -------------
+require("ultest").setup({
+  builders = {
+    ['python#pytest'] = function (cmd)
+        -- The command can start with python command directly or an env manager
+        local non_modules = {'python', 'pipenv', 'poetry'}
+        -- Index of the python module to run the test.
+        -- local module
+        local module_index
+        if vim.tbl_contains(non_modules, cmd[1]) then
+          -- module = cmd[3]
+          module_index = 3
+        else
+          -- module = cmd[1]
+          module_index = 1
+        end
+        -- Remaining elements are arguments to the module
+        local args = vim.list_slice(cmd, module_index + 1)
+        return {
+          dap = {
+            type = 'python',
+            name = 'TSA debugger',
+            request = 'launch',
+            -- module = module,
+            module = cmd[module_index],
+            args = args,
+            python = function()
+              -- debugpy supports launching an application with a different interpreter then the one used to launch debugpy itself.
+              -- The code below looks for a `venv` or `.venv` folder in the current directly and uses the python within.
+              -- You could adapt this - to for example use the `VIRTUAL_ENV` environment variable.
+              local venv_python = os.getenv("CONDA_PREFIX")
+              local cwd = vim.fn.getcwd()
+              return venv_python .. '/bin/python'
+            end,
+            justMycode = false
+          }
+        }
+      end
+  }
+})
+

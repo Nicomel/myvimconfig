@@ -97,9 +97,9 @@ let g:nvim_tree_icons = {
     \   }
     \ }
 
-nnoremap <Leader>fe :NvimTreeToggle<CR>
-nnoremap <leader>ff :NvimTreeFindFile<CR>
-nnoremap <leader>fr :NvimTreeRefresh<CR>
+nnoremap <Leader>ee :NvimTreeToggle<CR>
+nnoremap <leader>ef :NvimTreeFindFile<CR>
+nnoremap <leader>er :NvimTreeRefresh<CR>
 " NvimTreeOpen, NvimTreeClose, NvimTreeFocus, NvimTreeFindFileToggle, and NvimTreeResize are also available if you need them
 
 
@@ -120,10 +120,17 @@ nnoremap <leader>gb :Git branch<Space>
 nnoremap <leader>go :Git checkout<Space>
 
 " FZF map
-nnoremap <silent> <Leader>o :Files<CR>
-nnoremap <silent> <Leader>p :Buffers<CR>
-nnoremap <silent> <Leader>r :Rg<CR>
-nnoremap <silent> <Leader>ry :Rg <C-r>"<CR>
+" nnoremap <silent> <Leader>o :Files<CR>
+" nnoremap <silent> <Leader>p :Buffers<CR>
+" nnoremap <silent> <Leader>r :Rg<CR>
+" nnoremap <silent> <Leader>ry :Rg <C-r>"<CR>
+
+" Telescope
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " IndentLine
 " let g:indentLine_char_list = ['▏']

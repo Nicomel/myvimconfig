@@ -80,5 +80,6 @@ if !exists('g:vscode')
 
   if has('nvim')
     lua require('lsp-config')
+    lua require('dbg')
   endif
 endif
