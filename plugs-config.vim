@@ -118,6 +118,8 @@ nnoremap <leader>gp :Ggrep<Space>
 nnoremap <leader>gm :GMove<Space>
 nnoremap <leader>gb :Git branch<Space>
 nnoremap <leader>go :Git checkout<Space>
+nnoremap <leader>g2 :diffget //2<Space>
+nnoremap <leader>g3 :diffget //3<Space>
 
 " FZF map
 " nnoremap <silent> <Leader>o :Files<CR>

@@ -52,6 +52,8 @@ if !exists('g:vscode')
   noremap <leader>h <c-w>s<c-w>j
   noremap <leader>c :close<cr>
   noremap <leader>x :only<cr>
+  "To close a quick fix list
+  noremap <leader>cq :cclose<cr>
   " use ctrl-h/j/k/l to switch between splits
   map <c-j> <c-w>j
   map <c-k> <c-w>k
