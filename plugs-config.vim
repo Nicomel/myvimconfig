@@ -122,9 +122,9 @@ nnoremap <leader>g2 :diffget //2<Space>
 nnoremap <leader>g3 :diffget //3<Space>
 
 " FZF map
-" nnoremap <silent> <Leader>o :Files<CR>
-" nnoremap <silent> <Leader>p :Buffers<CR>
-" nnoremap <silent> <Leader>r :Rg<CR>
+nnoremap <silent> <Leader>zo :Files<CR>
+nnoremap <silent> <Leader>zp :Buffers<CR>
+nnoremap <silent> <Leader>zr :Rg<CR>
 " nnoremap <silent> <Leader>ry :Rg <C-r>"<CR>
 
 " Telescope
