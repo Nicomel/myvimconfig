@@ -122,10 +122,10 @@ nnoremap <leader>g2 :diffget //2<Space>
 nnoremap <leader>g3 :diffget //3<Space>
 
 " FZF map
-nnoremap <silent> <Leader>zo :Files<CR>
-nnoremap <silent> <Leader>zp :Buffers<CR>
-nnoremap <silent> <Leader>zr :Rg<CR>
-" nnoremap <silent> <Leader>ry :Rg <C-r>"<CR>
+nnoremap <silent> <Leader>zf :Files<CR>
+nnoremap <silent> <Leader>zs :Rg <C-r>"<CR>
+nnoremap <silent> <Leader>zg :Rg<CR>
+nnoremap <silent> <Leader>zb :Buffers<CR>
 
 " Telescope
 " Find files using Telescope command-line sugar.
