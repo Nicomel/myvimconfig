@@ -47,6 +47,8 @@ if !exists('g:vscode')
   " Move between buffers
   " nnoremap <leader>w :bdelete<cr>
   nnoremap <leader>w :bprevious<cr>:bdelete #<cr>
+  " Close all buffer but the current one
+  nnoremap <leader>W :%bd\|e#<cr>
   " use ,v to make a new vertical split, ,s for horiz, ,x to close a split
   noremap <leader>v <c-w>v<c-w>l
   noremap <leader>h <c-w>s<c-w>j
