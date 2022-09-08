@@ -1,8 +1,12 @@
--- lets override nvimtree's mappings
+-- lua/custom/mappings 
+local M = {}
 
--- M.nvimtree = {
---    n = {
---       ["<leader>ff"] = { "<cmd> NvimTreeToggle <CR>", "   toggle nvimtree" },
---       ["<C-n>"] = { "<cmd> Telescope <CR>", "open telescope" },
---    },
--- }
+M.globalmaps = {
+  n = {
+    ["<C-q>"] = { "<cmd> q <CR>", "Quit neovim"},
+    ["<leader>h"] = { "<C-w>s<C-w>l", "new horizontal split" }, -- lets override nvimtree's mappings
+    ["<leader>v"] = { "<C-w>v<C-w>l", "new vertical split" }, -- lets override nvimtree's mappings
+  }
+}
+
+return M

@@ -20,6 +20,36 @@ M.nvimtree = {
    },
 }
 
+M.mason = {
+   ensure_installed = {
+      -- lua stuff
+      "lua-language-server",
+      "stylua",
+
+      -- web dev
+      "css-lsp",
+      "html-lsp",
+      "typescript-language-server",
+      "diagnostic-languageserver",
+      "tailwindcss-language-server",
+      "json-lsp",
+      "prettier",
+
+      -- python
+      "black",
+      "flake8",
+      "pyright",
+      "debugpy",
+
+      -- rust
+      "rust-analyzer",
+
+      -- shell
+      "shfmt",
+      "shellcheck",
+   },
+}
+
 -- you cant directly call a module in chadrc thats related to the default config 
 -- Thats because most probably that module is lazyloaded
 -- In this case its 'cmp', we have lazyloaded it by default
