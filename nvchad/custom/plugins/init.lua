@@ -9,12 +9,23 @@ return {
       require "custom.plugins.lspconfig"
     end,
   },
+  ["nvim-neotest/neotest-python"] = {},
+  ["nvim-neotest/neotest-plenary"] = {},
+  ["nvim-neotest/neotest-vim-test"] = {},
   ["nvim-neotest/neotest"] = {
     module = "neotest",
+    opt = true,
     requires = {
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
-      "antoinemadec/FixCursorHold.nvim"
+      "antoinemadec/FixCursorHold.nvim",
+      "nvim-neotest/neotest-python",
+      "nvim-neotest/neotest-plenary",
+      "nvim-neotest/neotest-vim-test",
     },
+    config = function()
+      -- require("custom.plugins.configs").neotest()
+      require("custom.plugins.neotest").setup()
+    end,
   },
 }
