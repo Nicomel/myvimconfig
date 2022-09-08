@@ -83,7 +83,10 @@ if !exists('g:vscode')
   set completeopt=menuone,noselect
 
   if has('nvim')
+    lua require('styles-config')
     lua require('lsp-config')
+    lua require('dap-config')
     lua require('dbg')
+    lua require('test-config')
   endif
 endif

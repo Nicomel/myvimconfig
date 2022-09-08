@@ -85,14 +85,27 @@ let g:vim_markdown_conceal_code_blocks = 0
 " SymbolsOutline
 nnoremap <leader>l :SymbolsOutline<CR>
 
-" Ultest: TODO remove (not maintained anymore) and replace by neotest
-let g:ultest_use_pty = 1
-let g:ultest_deprecation_notice = 0
-nmap <silent> <leader>tn :TestNearest<CR>
-nmap <silent> <leader>tf :TestFile<CR>
-nmap <silent> <leader>ts :TestSuite<CR>
-nmap <silent> <leader>tl :TestLast<CR>
-nmap <silent> <leader>tv :TestVisit<CR>
+" Neotest
+"Run nearest
+nnoremap <silent> <leader>tn :lua require('neotest').run.run()<CR>
+"Debug nearest
+nnoremap <silent> <leader>tN :lua require('neotest').run.run({strategy = 'dap'})<CR>
+"Run file
+nnoremap <silent> <leader>tf :lua require('neotest').run.run(vim.fn.expand("%"))<CR>
+"Attach
+nnoremap <silent> <leader>ta :lua require('neotest').run.attach()<CR>
+"Debug file
+nnoremap <silent> <leader>tF :lua require('neotest').run.run({vim.fn.expand('%'), strategy = 'dap'})<CR>
+"Run last
+nnoremap <silent> <leader>tl :lua require('neotest').run.run_last()<CR>
+"Debug last
+nnoremap <silent> <leader>tL :lua require('neotest').run.run_last({ strategy = 'dap' })<CR>
+"Output
+nnoremap <silent> <leader>to :lua require('neotest').output.open({ enter = true })<CR>
+"Stop
+nnoremap <silent> <leader>tS :lua require('neotest').run.stop()<CR>
+"Summary
+nnoremap <silent> <leader>ts :lua require('neotest').summary.toggle()<CR>
 
 " Nvim-dap
 nnoremap <silent> <F5> :lua require'dap'.continue()<CR>
