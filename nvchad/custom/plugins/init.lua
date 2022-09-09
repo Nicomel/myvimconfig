@@ -3,6 +3,7 @@
 
 return {
   ["tpope/vim-unimpaired"] = {},
+  ["tpope/vim-fugitive"] = {},
   ["neovim/nvim-lspconfig"] = {
     config = function()
       require "plugins.configs.lspconfig"
