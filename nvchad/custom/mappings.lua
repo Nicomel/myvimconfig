@@ -33,6 +33,33 @@ M.fugitive = {
   }
 }
 
+M.dap = {
+  n = {
+    ["<leader>dc"] = { '<cmd>lua require"dap".continue()<CR>', "" },
+    ["<leader>dv"] = { '<cmd>lua require"dap".step_over()<CR>', "" },
+    ["<leader>di"] = { '<cmd>lua require"dap".step_into()<CR>', "" },
+    ["<leader>do"] = { '<cmd>lua require"dap".step_out()<CR>', "" },
+    ["<leader>db"] = { '<cmd>lua require"dap".toggle_breakpoint()<CR>', "" },
+    ["<leader>dsc"] = { '<cmd>lua require"dap.ui.variables".scopes()<CR>', "" },
+    ["<leader>dhh"] = { '<cmd>lua require"dap.ui.variables".hover()<CR>', "" },
+    ["<leader>dhv"] = { '<cmd>lua require"dap.ui.variables".visual_hover()<CR>', "" },
+    ["<leader>duh"] = { '<cmd>lua require"dap.ui.widgets".hover()<CR>', "" },
+    ["<leader>duf"] = { "<cmd>lua local widgets=require'dap.ui.widgets';widgets.centered_float(widgets.scopes)<CR>", "" },
+    ["<leader>dbr"] = { '<cmd>lua require"dap".set_breakpoint(vim.fn.input("Breakpoint condition: "))<CR>', "" },
+    ["<leader>dbm"] = { '<cmd>lua require"dap".set_breakpoint(nil, nil, vim.fn.input("Log point message: "))<CR>', "" },
+    ["<leader>dro"] = { '<cmd>lua require"dap".repl.open()<CR>', "" },
+    ["<leader>drl"] = { '<cmd>lua require"dap".repl.run_last()<CR>', "" },
+    -- telescope-dap
+    ["<leader>dtc"] = { '<cmd>lua require"telescope".extensions.dap.commands{}<CR>', "" },
+    ["<leader>dto"] = { '<cmd>lua require"telescope".extensions.dap.configurations{}<CR>', "" },
+    ["<leader>dtl"] = { '<cmd>lua require"telescope".extensions.dap.list_breakpoints{}<CR>', "" },
+    ["<leader>dtv"] = { '<cmd>lua require"telescope".extensions.dap.variables{}<CR>', "" },
+    ["<leader>dtf"] = { '<cmd>lua require"telescope".extensions.dap.frames{}<CR>', "" },
+    -- nvim-dap-ui
+    ["<leader>dui"] = { '<cmd>lua require"dapui".toggle()<CR>', "" },
+  }
+}
+
 M.neotest =  {
   n = {
     ["<leader>tn"] = {
