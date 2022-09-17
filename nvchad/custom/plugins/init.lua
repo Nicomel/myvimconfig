@@ -51,4 +51,11 @@ return {
       require("custom.plugins.neotest").setup()
     end,
   },
+  ["NTBBloodbath/rest.nvim"] = {
+    module = "nvim-rest",
+    requires = { "nvim-lua/plenary.nvim" },
+    config = function()
+      require("custom.plugins.rest").setup()
+    end,
+  }
 }

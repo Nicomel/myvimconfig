@@ -125,4 +125,15 @@ M.neotest =  {
   }
 }
 
+M.rest =  {
+  n = {
+    ["<leader>j"] = {
+      function()
+        require('rest-nvim').run()
+      end,
+      "Run REST request"
+    },
+  }
+}
+
 return M

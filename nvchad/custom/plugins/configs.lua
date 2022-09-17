@@ -11,6 +11,8 @@ M.treesitter = {
       "rust",
       "javascript",
       "typescript",
+      "http",
+      "json",
    },
 }
 
