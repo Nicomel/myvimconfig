@@ -2,8 +2,10 @@
 -- THe plugin name is github user or organization name/reponame
 
 return {
-  ["tpope/vim-unimpaired"] = {},
   ["tpope/vim-fugitive"] = {},
+  ["tpope/vim-unimpaired"] = {},
+  ["tpope/vim-abolish"] = {},
+  ["tpope/vim-surround"] = {},
   ["vim-test/vim-test"] = {},
   ["neovim/nvim-lspconfig"] = {
     config = function()
@@ -12,9 +14,9 @@ return {
     end,
   },
   ["mfussenegger/nvim-dap"] = {
-    module = "dap",
     opt = true,
     keys = { [[<leader>d]] },
+    module = {"dap"},
     wants = { "nvim-dap-virtual-text", "nvim-dap-ui", "nvim-dap-python" },
     requires = {
       "theHamsta/nvim-dap-virtual-text",
@@ -25,9 +27,9 @@ return {
     config = function()
       require("custom.plugins.dap").setup()
     end,
+    disable = false,
   },
   ["nvim-neotest/neotest"] = {
-    module = "neotest",
     opt = true,
     wants = {
       "plenary.nvim",
@@ -35,10 +37,12 @@ return {
       "FixCursorHold.nvim",
       "neotest-python",
       "neotest-plenary",
-      "vim-test",
       "neotest-vim-test",
+      "vim-test",
+      -- "overseer.nvim",
     },
     requires = {
+      "vim-test/vim-test",
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
       "antoinemadec/FixCursorHold.nvim",
@@ -46,10 +50,18 @@ return {
       "nvim-neotest/neotest-plenary",
       "nvim-neotest/neotest-vim-test",
     },
+    module = { "neotest", "neotest.async" },
+    cmd = {
+      "TestNearest",
+      "TestFile",
+      "TestSuite",
+      "TestLast",
+      "TestVisit",
+    },
     config = function()
-      -- require("custom.plugins.configs").neotest()
       require("custom.plugins.neotest").setup()
     end,
+    disable = false,
   },
   ["NTBBloodbath/rest.nvim"] = {
     module = "nvim-rest",

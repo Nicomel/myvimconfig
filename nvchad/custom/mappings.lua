@@ -33,30 +33,103 @@ M.fugitive = {
   }
 }
 
-M.dap = {
+M.gitsigns = {
   n = {
-    ["<leader>dc"] = { '<cmd>lua require"dap".continue()<CR>', "" },
-    ["<leader>dv"] = { '<cmd>lua require"dap".step_over()<CR>', "" },
-    ["<leader>di"] = { '<cmd>lua require"dap".step_into()<CR>', "" },
-    ["<leader>do"] = { '<cmd>lua require"dap".step_out()<CR>', "" },
-    ["<leader>db"] = { '<cmd>lua require"dap".toggle_breakpoint()<CR>', "" },
-    ["<leader>dsc"] = { '<cmd>lua require"dap.ui.variables".scopes()<CR>', "" },
-    ["<leader>dhh"] = { '<cmd>lua require"dap.ui.variables".hover()<CR>', "" },
-    ["<leader>dhv"] = { '<cmd>lua require"dap.ui.variables".visual_hover()<CR>', "" },
-    ["<leader>duh"] = { '<cmd>lua require"dap.ui.widgets".hover()<CR>', "" },
-    ["<leader>duf"] = { "<cmd>lua local widgets=require'dap.ui.widgets';widgets.centered_float(widgets.scopes)<CR>", "" },
-    ["<leader>dbr"] = { '<cmd>lua require"dap".set_breakpoint(vim.fn.input("Breakpoint condition: "))<CR>', "" },
-    ["<leader>dbm"] = { '<cmd>lua require"dap".set_breakpoint(nil, nil, vim.fn.input("Log point message: "))<CR>', "" },
-    ["<leader>dro"] = { '<cmd>lua require"dap".repl.open()<CR>', "" },
-    ["<leader>drl"] = { '<cmd>lua require"dap".repl.run_last()<CR>', "" },
-    -- telescope-dap
-    ["<leader>dtc"] = { '<cmd>lua require"telescope".extensions.dap.commands{}<CR>', "" },
-    ["<leader>dto"] = { '<cmd>lua require"telescope".extensions.dap.configurations{}<CR>', "" },
-    ["<leader>dtl"] = { '<cmd>lua require"telescope".extensions.dap.list_breakpoints{}<CR>', "" },
-    ["<leader>dtv"] = { '<cmd>lua require"telescope".extensions.dap.variables{}<CR>', "" },
-    ["<leader>dtf"] = { '<cmd>lua require"telescope".extensions.dap.frames{}<CR>', "" },
-    -- nvim-dap-ui
-    ["<leader>dui"] = { '<cmd>lua require"dapui".toggle()<CR>', "" },
+    ["]c"] = {
+      function()
+        require('gitsigns').next_hunk()
+      end,
+      "Next hunk"
+    },
+    ["[c"] = {
+      function()
+        require('gitsigns').prev_hunk()
+      end,
+      "Prev hunk"
+    },
+    ["<leader>hs"] = {
+      function()
+        require('gitsigns').stage_hunk()
+      end,
+      "Stage hunk"
+    },
+    ["<leader>hr"] = {
+      function()
+        require('gitsigns').prev_hunk()
+      end,
+      "Prev hunk"
+    },
+    ["<leader>hu"] = {
+      function()
+        require('gitsigns').undo_stage_hunk()
+      end,
+      "Undo stage hunk"
+    },
+    ["<leader>hR"] = {
+      function()
+        require('gitsigns').reset_buffer()
+      end,
+      "Reset buffer"
+    },
+    ["<leader>hp"] = {
+      function()
+        require('gitsigns').preview_hunk()
+      end,
+      "Preview hunk"
+    },
+    ["<leader>hb"] = {
+      function()
+        require('gitsigns').blame_line{full=true}
+      end,
+      "Blame line"
+    },
+    ["<leader>tb"] = {
+      function()
+        require('gitsigns').toggle_current_line_blame()
+      end,
+      "Toggle current line blame"
+    },
+    ["<leader>hd"] = {
+      function()
+        require('gitsigns').diffthis()
+      end,
+      "Diff this"
+    },
+    ["<leader>hD"] = {
+      function()
+        require('gitsigns').diffthis('~')
+      end,
+      "Diff this ~"
+    },
+    ["<leader>td"] = {
+      function()
+        require('gitsigns').toggle_deleted()
+      end,
+      "Toggle deleted"
+    },
+  },
+
+  v = {
+    ["<leader>hs"] = {
+      function()
+        require('gitsigns').stage_hunk()
+      end,
+      "Stage hunk"
+    },
+    ["<leader>hr"] = {
+      function()
+        require('gitsigns').prev_hunk()
+      end,
+      "Prev hunk"
+    },
+  },
+
+  o = {
+    ["ih"] = {"<cmd> <C-U>Gitsigns select_hunk<CR>", ""},
+  },
+
+  x = {
+    ["ih"] = {"<cmd> <C-U>Gitsigns select_hunk<CR>", ""},
   }
 }
 
@@ -125,7 +198,36 @@ M.neotest =  {
   }
 }
 
-M.rest =  {
+M.dap = {
+ n = {
+    ["<leader>dR"] = { "<cmd>lua require'dap'.run_to_cursor()<cr>", "Run to Cursor" },
+    ["<leader>dE"] = { "<cmd>lua require'dapui'.eval(vim.fn.input '[Expression] > ')<cr>", "Evaluate Input" },
+    ["<leader>dC"] = { "<cmd>lua require'dap'.set_breakpoint(vim.fn.input '[Condition] > ')<cr>", "Conditional Breakpoint" },
+    ["<leader>dU"] = { "<cmd>lua require'dapui'.toggle()<cr>", "Toggle UI" },
+    ["<leader>db"] = { "<cmd>lua require'dap'.step_back()<cr>", "Step Back" },
+    ["<leader>dc"] = { "<cmd>lua require'dap'.continue()<cr>", "Continue" },
+    ["<leader>dd"] = { "<cmd>lua require'dap'.disconnect()<cr>", "Disconnect" },
+    ["<leader>de"] = { "<cmd>lua require'dapui'.eval()<cr>", "Evaluate" },
+    ["<leader>dg"] = { "<cmd>lua require'dap'.session()<cr>", "Get Session" },
+    ["<leader>dh"] = { "<cmd>lua require'dap.ui.widgets'.hover()<cr>", "Hover Variables" },
+    ["<leader>dS"] = { "<cmd>lua require'dap.ui.widgets'.scopes()<cr>", "Scopes" },
+    ["<leader>di"] = { "<cmd>lua require'dap'.step_into()<cr>", "Step Into" },
+    ["<leader>do"] = { "<cmd>lua require'dap'.step_over()<cr>", "Step Over" },
+    ["<leader>dp"] = { "<cmd>lua require'dap'.pause.toggle()<cr>", "Pause" },
+    ["<leader>dq"] = { "<cmd>lua require'dap'.close()<cr>", "Quit" },
+    ["<leader>dr"] = { "<cmd>lua require'dap'.repl.toggle()<cr>", "Toggle Repl" },
+    ["<leader>ds"] = { "<cmd>lua require'dap'.continue()<cr>", "Start" },
+    ["<leader>dt"] = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Toggle Breakpoint" },
+    ["<leader>dx"] = { "<cmd>lua require'dap'.terminate()<cr>", "Terminate" },
+    ["<leader>du"] = { "<cmd>lua require'dap'.step_out()<cr>", "Step Out" },
+  },
+
+  v = {
+    ["<leader>de"] = { "<cmd>lua require'dapui'.eval()<cr>", "Evaluate" },
+  }
+}
+
+M.rest = {
   n = {
     ["<leader>j"] = {
       function()

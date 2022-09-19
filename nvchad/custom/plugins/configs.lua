@@ -52,6 +52,10 @@ M.mason = {
    },
 }
 
+M.whichkey = {
+    disable = false,
+}
+
 -- you cant directly call a module in chadrc thats related to the default config 
 -- Thats because most probably that module is lazyloaded
 -- In this case its 'cmp', we have lazyloaded it by default
@@ -59,7 +63,7 @@ M.mason = {
 -- And the function needs to return a table!
 
 M.cmp = function()
-   local cmp = require 'cmp' 
+   local cmp = require 'cmp'
 
    return {
       mapping = {
