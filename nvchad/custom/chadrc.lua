@@ -7,6 +7,11 @@ local pluginConfs = require "custom.plugins.configs"
 -- example of changing theme:
 
 M.ui = {
+  hl_add = {
+    DapBreakpoint = { fg = "red", bg = "lightbg" },
+    DapLogPoint = { fg = "blue", bg = "lightbg" },
+    DapStopped = { fg = "green", bg = "lightbg" },
+  },
   hl_override = {
     Comment = { italic = true },
   },
