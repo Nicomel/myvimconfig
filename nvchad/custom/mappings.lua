@@ -8,6 +8,9 @@ M.globalmaps = {
     ["<leader>v"] = { "<C-w>v<C-w>l", "new vertical split" }, -- lets override nvimtree's mappings
     ["<leader>o"] = { "<cmd> only<CR>", "Close split and keep current buffer" },
     ["<leader>xq"] = { "<cmd> cclose", "To close a quick fix list" },
+    ["<leader>;"] = { "<cmd> tab split<CR>", "Creat new tab from the current buffer" },
+    ["<leader>:"] = { "<cmd> tabc<CR>", "Close tab" },
+    ["<leader>w"] = { "<cmd> bprevious<cr>:bdelete #<cr>", "Close current buffer and go back to the previous one" },
   }
 }
 
@@ -217,7 +220,7 @@ M.dap = {
     ["<leader>dq"] = { "<cmd>lua require'dap'.close()<cr>", "Quit" },
     ["<leader>dr"] = { "<cmd>lua require'dap'.repl.toggle()<cr>", "Toggle Repl" },
     ["<leader>ds"] = { "<cmd>lua require'dap'.continue()<cr>", "Start" },
-    ["<leader>dt"] = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Toggle Breakpoint" },
+    ["<leader>db"] = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Toggle Breakpoint" },
     ["<leader>dx"] = { "<cmd>lua require'dap'.terminate()<cr>", "Terminate" },
     ["<leader>du"] = { "<cmd>lua require'dap'.step_out()<cr>", "Step Out" },
   },
