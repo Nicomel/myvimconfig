@@ -1,13 +1,13 @@
 -- lua/custom/mappings 
 local M = {}
 
-M.globalmaps = {
+M.general = {
   n = {
     ["<C-q>"] = { "<cmd> q <CR>", "Quit neovim"},
     ["<leader>h"] = { "<C-w>s<C-w>l", "new horizontal split" }, -- lets override nvimtree's mappings
     ["<leader>v"] = { "<C-w>v<C-w>l", "new vertical split" }, -- lets override nvimtree's mappings
     ["<leader>o"] = { "<cmd> only<CR>", "Close split and keep current buffer" },
-    ["<leader>xq"] = { "<cmd> cclose", "To close a quick fix list" },
+    ["<leader>xq"] = { "<cmd> cclose<CR>", "To close a quick fix list" },
     ["<leader>;"] = { "<cmd> tab split<CR>", "Creat new tab from the current buffer" },
     ["<leader>:"] = { "<cmd> tabc<CR>", "Close tab" },
     ["<leader>w"] = { "<cmd> bprevious<cr>:bdelete #<cr>", "Close current buffer and go back to the previous one" },
@@ -207,7 +207,7 @@ M.dap = {
     ["<leader>dE"] = { "<cmd>lua require'dapui'.eval(vim.fn.input '[Expression] > ')<cr>", "Evaluate Input" },
     ["<leader>dC"] = { "<cmd>lua require'dap'.set_breakpoint(vim.fn.input '[Condition] > ')<cr>", "Conditional Breakpoint" },
     ["<leader>dU"] = { "<cmd>lua require'dapui'.toggle()<cr>", "Toggle UI" },
-    ["<leader>db"] = { "<cmd>lua require'dap'.step_back()<cr>", "Step Back" },
+    ["<leader>dk"] = { "<cmd>lua require'dap'.step_back()<cr>", "Step Back" },
     ["<leader>dc"] = { "<cmd>lua require'dap'.continue()<cr>", "Continue" },
     ["<leader>dd"] = { "<cmd>lua require'dap'.disconnect()<cr>", "Disconnect" },
     ["<leader>de"] = { "<cmd>lua require'dapui'.eval()<cr>", "Evaluate" },

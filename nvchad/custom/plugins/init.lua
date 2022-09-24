@@ -1,18 +1,33 @@
 -- custom/plugins/init.lua has to return a table
--- THe plugin name is github user or organization name/reponame
+-- The plugin name is github user or organization name/reponame
+
+local overrides = require "custom.plugins.overrides"
 
 return {
-  ["tpope/vim-fugitive"] = {},
-  ["tpope/vim-unimpaired"] = {},
-  ["tpope/vim-abolish"] = {},
-  ["tpope/vim-surround"] = {},
-  ["vim-test/vim-test"] = {},
+  -- Override plugin definition options
   ["neovim/nvim-lspconfig"] = {
     config = function()
       require "plugins.configs.lspconfig"
       require "custom.plugins.lspconfig"
     end,
   },
+  -- override plugin configs
+  ["nvim-treesitter/nvim-treesitter"] = {
+    override_options = overrides.treesitter,
+  },
+
+  ["williamboman/mason.nvim"] = {
+    override_options = overrides.mason,
+  },
+
+  ["kyazdani42/nvim-tree.lua"] = {
+    override_options = overrides.nvimtree,
+  },
+  ["tpope/vim-fugitive"] = {},
+  ["tpope/vim-unimpaired"] = {},
+  ["tpope/vim-abolish"] = {},
+  ["tpope/vim-surround"] = {},
+  ["vim-test/vim-test"] = {},
   ["mfussenegger/nvim-dap"] = {
     opt = true,
     keys = { [[<leader>d]] },
@@ -63,7 +78,6 @@ return {
     disable = false,
   },
   ["NTBBloodbath/rest.nvim"] = {
-    module = "nvim-rest",
     requires = { "nvim-lua/plenary.nvim" },
     config = function()
       require("custom.plugins.rest").setup()
