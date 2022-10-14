@@ -1,6 +1,13 @@
 -- lua/custom/mappings 
 local M = {}
 
+M.disabled = {
+  n = {
+    ["<Tab>"] = "",
+    ["<TAB>"] = "",
+    ["<S-Tab>"] = ""
+  }
+}
 M.general = {
   n = {
     ["<C-q>"] = { "<cmd> q <CR>", "Quit neovim"},
