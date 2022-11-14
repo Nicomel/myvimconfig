@@ -65,9 +65,9 @@ M.gitsigns = {
     },
     ["<leader>hr"] = {
       function()
-        require('gitsigns').prev_hunk()
+        require('gitsigns').reset_hunk()
       end,
-      "Prev hunk"
+      "Reset hunk"
     },
     ["<leader>hu"] = {
       function()
