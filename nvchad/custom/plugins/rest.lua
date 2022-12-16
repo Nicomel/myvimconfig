@@ -17,9 +17,12 @@ function M.setup()
     },
     result = {
       -- toggle showing URL, HTTP info, headers at top the of result window
-      show_url = true,
-      show_http_info = true,
-      show_headers = true,
+      -- show_url = true,
+      -- show_http_info = true,
+      -- show_headers = true,
+      show_url = false,
+      show_http_info = false,
+      show_headers = false,
       -- executables or functions for formatting response body [optional]
       -- set them to nil if you want to disable them
       formatters = {
