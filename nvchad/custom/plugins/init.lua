@@ -28,6 +28,7 @@ return {
   ["tpope/vim-abolish"] = {},
   ["tpope/vim-surround"] = {},
   ["vim-test/vim-test"] = {},
+  ["github/copilot"] = {},
   ["mfussenegger/nvim-dap"] = {
     opt = true,
     keys = { [[<leader>d]] },
