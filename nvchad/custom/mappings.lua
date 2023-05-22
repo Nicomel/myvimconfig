@@ -8,6 +8,7 @@ M.disabled = {
     ["<S-Tab>"] = ""
   }
 }
+
 M.general = {
   n = {
     ["<C-q>"] = { "<cmd> q <CR>", "Quit neovim"},
@@ -15,11 +16,17 @@ M.general = {
     ["<leader>v"] = { "<C-w>v<C-w>l", "new vertical split" }, -- lets override nvimtree's mappings
     ["<leader>o"] = { "<cmd> only<CR>", "Close split and keep current buffer" },
     ["<leader>xq"] = { "<cmd> cclose<CR>", "To close a quick fix list" },
-    ["<leader>;"] = { "<cmd> tab split<CR>", "Creat new tab from the current buffer" },
+    ["<leader>;"] = { "<cmd> tab split<CR>", "Create new tab from the current buffer" },
     ["<leader>:"] = { "<cmd> tabc<CR>", "Close tab" },
     ["<leader>w"] = { "<cmd> bprevious<cr>:bdelete #<cr>", "Close current buffer and go back to the previous one" },
   }
 }
+
+-- M.copilot = {
+--   i = {
+--     ["<leader>="] = { "<cmd> Copilot panel<CR>", "Open Copilot panel of suggestion"},
+--   }
+-- }
 
 M.fugitive = {
   n = {
