@@ -68,9 +68,6 @@ local plugins = {
     "tpope/vim-surround",
     lazy = false
   },
-  {
-    "vim-test/vim-test"
-  },
 
   {
     "zbirenbaum/copilot.lua",
@@ -104,6 +101,21 @@ local plugins = {
       })
     end,
   },
+
+  {
+    "NTBBloodbath/rest.nvim",
+    requires = { "nvim-lua/plenary.nvim" },
+    config = function()
+      require("custom.plugins.rest").setup()
+    end,
+  },
+  {
+    "iamcco/markdown-preview.nvim",
+    run = "cd app && npm install",
+    setup = function() vim.g.mkdp_filetypes = { "markdown" } end,
+    ft = { "markdown" },
+  },
+
   -- To make a plugin not be loaded
   -- {
   --   "NvChad/nvim-colorizer.lua",
