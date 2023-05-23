@@ -5,7 +5,8 @@ M.disabled = {
   n = {
     ["<Tab>"] = "",
     ["<TAB>"] = "",
-    ["<S-Tab>"] = ""
+    ["<S-Tab>"] = "",
+    ["<Esc>"] = ""
   }
 }
 
@@ -14,6 +15,7 @@ M.general = {
 --    [";"] = { ":", "enter command mode", opts = { nowait = true } },
 --  },
   n = {
+    ["<Esc>"] = { "<esc>", "Escape" },
     ["<C-q>"] = { "<cmd> q <CR>", "Quit neovim"},
     ["<leader>h"] = { "<C-w>s<C-w>l", "new horizontal split" }, -- lets override nvimtree's mappings
     ["<leader>v"] = { "<C-w>v<C-w>l", "new vertical split" }, -- lets override nvimtree's mappings
@@ -22,6 +24,10 @@ M.general = {
     ["<leader>;"] = { "<cmd> tab split<CR>", "Create new tab from the current buffer" },
     ["<leader>:"] = { "<cmd> tabc<CR>", "Close tab" },
     ["<leader>w"] = { "<cmd> bprevious<cr>:bdelete #<cr>", "Close current buffer and go back to the previous one" },
+  },
+
+  i = {
+    ["<Esc>"] = { "<esc>", "exit insert mode" }
   }
 }
 
