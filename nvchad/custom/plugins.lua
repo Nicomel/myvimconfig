@@ -106,7 +106,7 @@ local plugins = {
     "NTBBloodbath/rest.nvim",
     requires = { "nvim-lua/plenary.nvim" },
     config = function()
-      require("custom.plugins.rest").setup()
+      require("custom.configs.rest").setup()
     end,
   },
   {

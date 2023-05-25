@@ -155,4 +155,15 @@ M.gitsigns = {
   }
 }
 
+M.rest = {
+  n = {
+    ["<leader>j"] = {
+      function()
+        require('rest-nvim').run()
+      end,
+      "Run REST request"
+    },
+  }
+}
+
 return M

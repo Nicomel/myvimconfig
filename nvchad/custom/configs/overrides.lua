@@ -10,6 +10,7 @@ M.treesitter = {
     "rust",
     "javascript",
     "typescript",
+    "http",
     "tsx",
     "c",
     "markdown",
