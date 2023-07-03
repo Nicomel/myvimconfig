@@ -1,0 +1,13 @@
+[[language]]
+name = "python"
+formatter = { command = "black", args = ["--quiet", "-"] }
+auto-format = true
+
+[language.config.pylsp.plugins]
+pyflakes = {enabled = false}
+mccabe = {enabled = false}
+pycodestyle = {enabled = false}
+autopep8 = {enabled = false}
+yapf = {enabled = false}
+flake8 = {enabled = true, maxLineLength = 120}
+pylint = {enabled = false}
