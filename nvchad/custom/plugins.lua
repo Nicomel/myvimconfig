@@ -111,9 +111,9 @@ local plugins = {
   },
   {
     "iamcco/markdown-preview.nvim",
-    run = "cd app && npm install",
-    setup = function() vim.g.mkdp_filetypes = { "markdown" } end,
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
     ft = { "markdown" },
+    build = function() vim.fn["mkdp#util#install"]() end,
   },
 
   -- To make a plugin not be loaded
