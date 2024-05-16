@@ -68,6 +68,10 @@ local plugins = {
     "tpope/vim-surround",
     lazy = false
   },
+  {
+    "xiyaowong/transparent.nvim",
+    lazy = false
+  },
 
   {
     "zbirenbaum/copilot.lua",
@@ -115,7 +119,6 @@ local plugins = {
     ft = { "markdown" },
     build = function() vim.fn["mkdp#util#install"]() end,
   },
-
   -- To make a plugin not be loaded
   -- {
   --   "NvChad/nvim-colorizer.lua",
