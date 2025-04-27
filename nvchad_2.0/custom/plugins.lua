@@ -105,12 +105,28 @@ local plugins = {
       })
     end,
   },
-
   {
-    "NTBBloodbath/rest.nvim",
-    requires = { "nvim-lua/plenary.nvim" },
+    "CopilotC-Nvim/CopilotChat.nvim",
+    branch = "canary",
+    dependencies = {
+      { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
+      { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
+    },
+  },
+  {
+    "vhyrro/luarocks.nvim",
+    priority = 1000,
+    config = true,
+    opts = {
+      rocks = { "lua-curl", "nvim-nio", "mimetypes", "xml2lua" }
+    }
+  },
+  {
+    "rest-nvim/rest.nvim",
+    ft = "http",
+    dependencies = { "luarocks.nvim" },
     config = function()
-      require("custom.configs.rest").setup()
+      require("rest-nvim").setup()
     end,
   },
   {
